@@ -1,0 +1,91 @@
+import { Container, Box } from "@mui/material";
+import Logo from "../../molecule/Logo";
+import Typography from "../../atom/Typography";
+//iuse stack
+import image from "../../../assets/Image/Logo/Blinkist_Logo.png";
+const FooterComponent = (props: any) => {
+  const data = [
+    {
+      category: "Editorial",
+      list: [
+        "Book lists",
+        "What is Notfication?",
+        "What to read next?",
+        "Benefits of reading",
+      ],
+    },
+    {
+      category: "Useful links",
+      list: ["Pricing", "Blinkist business", "Gift cards", "Blinkist magaine"],
+    },
+    {
+      category: "Company",
+      list: ["About", "Careers", "Partners", "Code of Conduct"],
+    },
+  ];
+  return (
+    <>
+      <Box {...props}>
+        <Container
+          sx={{
+            display: "flex",
+            // justifyItems: "stretch",
+            justifyContent: "space-between",
+            // flexFlow: "row wrap",
+          }}
+        >
+          <Box>
+            <Logo
+              height={24}
+              width={99.1}
+              url={image}
+              // url="../../../assets/Image/Logo/Blinkist_Logo.png" --> this doesn't works don't know why
+              name="Blinkist"
+              data-testid="logo"
+            />
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: "bold", color: "blue" }}
+              data-testid="slogan"
+            >
+              Big ideas in small packages <br />
+              Start learning now
+            </Typography>
+          </Box>
+          <Box sx={{ display: "flex", justifyItems: "center" }}>
+            {data.map((curr, i) => {
+              return (
+                <Box
+                  key={`footer-${i}`}
+                  sx={{
+                    margin: "0px 20px",
+                  }}
+                  data-testid="list"
+                >
+                  <Typography pb={2} sx={{ fontWeight: "bold" }}>
+                    {curr.category}
+                  </Typography>
+                  {curr.list.map((currList) => {
+                    return <Typography pb={1}>{currList}</Typography>;
+                  })}
+                </Box>
+              );
+            })}
+          </Box>
+        </Container>
+        {/* <Container
+          sx={{
+            display: "grid",
+            // justifyItems: "stretch",
+            // justifyContent: "space-between",
+            // flexFlow: "row wrap",
+          }}
+        > */}
+
+        {/* </Container> */}
+      </Box>
+    </>
+  );
+};
+
+export default FooterComponent;
