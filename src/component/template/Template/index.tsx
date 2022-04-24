@@ -1,3 +1,4 @@
+import MyLibrary from "../../page/MyLibrary/index";
 import Header from "../../../component/organism/Header";
 import LogoImage from "../../../assets/Image/Logo/Blinkist_Logo.png";
 import Explore from "../../../component/organism/Explore";
@@ -18,25 +19,38 @@ const TemplateComponent = () => {
   const [trendingBlinks, setTrendingBlinks] = useState<any>(null);
   const [justAdded, setJustAdded] = useState<any>(null);
   const [featuredAudioBlinks, setFeaturedAudioBlinks] = useState<any>(null);
+  const [currentlyReadingBooks, setCurrentlyReadingBooks] = useState<any>(null);
+  const [finishedReadingBooks, setFinishedReadingBooks] = useState<any>(null);
 
-  const bookData = async () => {
-    let response = await fetch("./json/trendingBlinks.json");
-    let rData = await response.json();
-    console.log("rData", rData);
-    setTrendingBlinks(rData);
-    console.log("trendingBlinks", trendingBlinks);
-    response = await fetch("./json/justAdded.json");
-    let rLibrary = await response.json();
-    setJustAdded(rLibrary);
-    console.log("rLibrary", rLibrary);
-    console.log("justAdded", justAdded);
-    response = await fetch("./json/featuredAudioBlinks.json");
-    let rBooks = await response.json();
-    setFeaturedAudioBlinks(rBooks);
-    console.log("rBooks", rBooks);
-    console.log("featuredAudioBlinks", featuredAudioBlinks);
-  };
   useEffect(() => {
+    const bookData = async () => {
+      let response = await fetch("./json/trendingBlinks.json");
+      let trendingBooks = await response.json();
+
+      setTrendingBlinks(trendingBooks);
+
+      response = await fetch("./json/justAdded.json");
+      let library = await response.json();
+      setJustAdded(library);
+
+      response = await fetch("./json/featuredAudioBlinks.json");
+      let allBooks = await response.json();
+      setFeaturedAudioBlinks(allBooks);
+
+      response = await fetch("./json/currentlyReadingBooks.json");
+      let currentReadingBooks = await response.json();
+      setCurrentlyReadingBooks(currentReadingBooks);
+      console.log("currentReadingBooks", currentReadingBooks);
+      console.log("currentlyReadingBooks", currentlyReadingBooks);
+
+      response = await fetch("./json/finishedBooks.json");
+      let finishedBooks = await response.json();
+      setFinishedReadingBooks(finishedBooks);
+      console.log("finishedBooks");
+      console.log("finishedBooks", finishedBooks);
+      console.log("finishedReadingBooks", finishedReadingBooks);
+    };
+
     bookData();
   }, []);
 
@@ -69,6 +83,18 @@ const TemplateComponent = () => {
           }}
         >
           <Routes>
+            <Route // for all the My LIbrary part(Currently reading & Finished)
+              path="/library"
+              element={
+                <MyLibrary
+                  currentlyReadingBooks={currentlyReadingBooks}
+                  setCurrentlyReadingBooks={setCurrentlyReadingBooks}
+                  finishedReadingBooks={finishedReadingBooks}
+                  setFinishedReadingBooks={setFinishedReadingBooks}
+                />
+              }
+            />
+
             <Route // Main Content part of the home page
               path="/"
               element={

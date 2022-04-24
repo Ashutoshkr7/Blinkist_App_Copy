@@ -16,10 +16,5 @@ export const Template: ComponentStory<typeof Header> = (args: any) => {
     </Router>
   );
 };
-Template.args = {
-  url: { LogoURL },
-
-  name: "Blinkist",
-};
 
 export default HeaderComponent;

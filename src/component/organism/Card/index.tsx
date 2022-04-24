@@ -59,8 +59,6 @@ const CardComponent = ({
   timeRead = "0-minute read",
   progress,
   width,
-  inLibrary,
-  libraryHandler,
   ...props
 }: any) => {
   const [hoverState, setHoverState] = useState(false);
