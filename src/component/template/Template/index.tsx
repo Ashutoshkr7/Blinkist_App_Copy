@@ -1,12 +1,13 @@
-import MyLibrary from "../../page/MyLibrary/index";
+import MyLibrary from "../../../component/page/MyLibrary";
+import Home from "../../../component/page/Home";
 import Header from "../../../component/organism/Header";
+import BookInfo from "../../../component/page/BookInfo";
 import LogoImage from "../../../assets/Image/Logo/Blinkist_Logo.png";
 import Explore from "../../../component/organism/Explore";
 import Footer from "../../../component/organism/Footer";
 import { Box, Container } from "@mui/material";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
-import Home from "../../page/Home";
 import { useState, useEffect } from "react";
 
 const TemplateComponent = () => {
@@ -21,6 +22,7 @@ const TemplateComponent = () => {
   const [featuredAudioBlinks, setFeaturedAudioBlinks] = useState<any>(null);
   const [currentlyReadingBooks, setCurrentlyReadingBooks] = useState<any>(null);
   const [finishedReadingBooks, setFinishedReadingBooks] = useState<any>(null);
+  const [library, setLibrary] = useState<any>(null);
 
   useEffect(() => {
     const bookData = async () => {
@@ -30,31 +32,38 @@ const TemplateComponent = () => {
       setTrendingBlinks(trendingBooks);
 
       response = await fetch("./json/justAdded.json");
-      let library = await response.json();
-      setJustAdded(library);
+      let justAddedBooks = await response.json();
+      setJustAdded(justAddedBooks);
 
       response = await fetch("./json/featuredAudioBlinks.json");
-      let allBooks = await response.json();
-      setFeaturedAudioBlinks(allBooks);
+      let audioBlinks = await response.json();
+      setFeaturedAudioBlinks(audioBlinks);
 
       response = await fetch("./json/currentlyReadingBooks.json");
       let currentReadingBooks = await response.json();
       setCurrentlyReadingBooks(currentReadingBooks);
-      console.log("currentReadingBooks", currentReadingBooks);
-      console.log("currentlyReadingBooks", currentlyReadingBooks);
+      // console.log("currentReadingBooks", currentReadingBooks);
+      // console.log("currentlyReadingBooks", currentlyReadingBooks);
 
       response = await fetch("./json/finishedBooks.json");
       let finishedBooks = await response.json();
       setFinishedReadingBooks(finishedBooks);
-      console.log("finishedBooks");
-      console.log("finishedBooks", finishedBooks);
-      console.log("finishedReadingBooks", finishedReadingBooks);
+      // console.log("finishedBooks",);
+      // console.log("finishedBooks", finishedBooks);
+      // console.log("finishedReadingBooks", finishedReadingBooks);
+
+      response = await fetch("./json/library.json");
+      let libraryBooks = await response.json();
+      setLibrary(libraryBooks);
+      // console.log("library", libraryBooks);
+      // console.log("setLIb", setLibrary);
+      // console.log("finishedBooks");
     };
 
     bookData();
   }, []);
 
-  return !trendingBlinks || !justAdded || !featuredAudioBlinks ? (
+  return !library || !trendingBlinks || !justAdded || !featuredAudioBlinks ? (
     <Container
       sx={{
         display: "flex",
@@ -91,10 +100,25 @@ const TemplateComponent = () => {
                   setCurrentlyReadingBooks={setCurrentlyReadingBooks}
                   finishedReadingBooks={finishedReadingBooks}
                   setFinishedReadingBooks={setFinishedReadingBooks}
+                  library={library}
+                  setLibrary={setLibrary}
                 />
               }
             />
-
+            <Route
+              path="bookInfo/:bookId"
+              element={
+                <BookInfo
+                  library={library}
+                  setLibrary={setLibrary}
+                  // bookId={id}
+                  // currentlyReadingBooks={currentlyReadingBooks}
+                  // setCurrentlyReadingBooks={setCurrentlyReadingBooks}
+                  // finishedReadingBooks={finishedReadingBooks}
+                  // setFinishedReadingBooks={setFinishedReadingBooks}
+                />
+              }
+            />
             <Route // Main Content part of the home page
               path="/"
               element={
@@ -105,6 +129,8 @@ const TemplateComponent = () => {
                   setJustAdded={setJustAdded}
                   featuredAudioBlinks={featuredAudioBlinks}
                   setFeaturedAudioBlinks={setFeaturedAudioBlinks}
+                  library={library}
+                  setLibrary={setLibrary}
                 />
               }
             />

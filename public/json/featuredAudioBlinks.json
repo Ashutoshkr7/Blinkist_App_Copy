@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": 9,
     "name": "Bring Your Human to Work",
     "url": "./assets/Image/Book_Image/bringYourHumanToWork.png",
     "timeRead": "13-minute read",
@@ -13,7 +13,7 @@
   },
   {
     "id": 1,
-    "name": "Beyond Entrepreneurship 2.0",
+    "name": "Beyond Entrepreneurship",
     "url": "./assets/Image/Book_Image/beyondEntrepreneurship.png",
     "timeRead": "15-minute read",
     "writerName": "Jim Collins & Bill Lazier",
@@ -25,7 +25,7 @@
   },
 
   {
-    "id": 2,
+    "id": 10,
     "name": "Doesn’t Hurt to Ask",
     "url": "./assets/Image/Book_Image/doesn’tHurtToAsk.png",
     "timeRead": "13-minute read",

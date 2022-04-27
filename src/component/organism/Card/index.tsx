@@ -5,7 +5,7 @@ import Typography from "../../atom/Typography";
 import ProgressBar from "../../atom/ProgressBar";
 import Icon from "../../atom/Icon";
 import AddIcon from "@mui/icons-material/Add";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import theme from "../../../theme/MainTheme/mainTheme";
 import { useState } from "react";
 
@@ -59,12 +59,14 @@ const CardComponent = ({
   timeRead = "0-minute read",
   progress,
   width,
+
   ...props
 }: any) => {
   const [hoverState, setHoverState] = useState(false);
   const hoverStateHandler = () => {
     setHoverState(!hoverState);
   };
+  // console.log("cardId", cardId);
   return (
     <>
       <Paper
@@ -82,15 +84,17 @@ const CardComponent = ({
         onMouseLeave={hoverStateHandler}
         style={styles.parent}
       >
-        <Image
-          height={imgHeight}
-          width={width}
-          alt="blinkist"
-          component="img"
-          src={url}
-          style={styles.image}
-        />
-
+        <Link to={`/bookInfo/${props.cardId}`}>
+          {/* <Link to={`/bookNo/${cardId}`}> */}
+          <Image
+            height={imgHeight}
+            width={width}
+            alt="blinkist"
+            component="img"
+            src={url}
+            style={styles.image}
+          />
+        </Link>
         <Box
           sx={{
             backgroundColor: `${

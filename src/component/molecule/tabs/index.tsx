@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -43,6 +43,7 @@ export default function TabsWrappedLabel({ tabData, ...props }: any) {
                 sx={{
                   width: "200px",
                   fontSize: "16px",
+                  // borderBottom: "2px solid green",
                   borderBottom: "2px solid #E1ECFC",
                   alignItems: "start",
                 }}

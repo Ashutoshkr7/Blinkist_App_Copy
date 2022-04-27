@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Container, Box } from "@mui/material";
 import Typography from "../../atom/Typography";
-import baseTheme from "../../../theme/MainTheme/mainTheme";
-// import baseTheme from "../../../theme/buttonTheme";
+// import baseTheme from "../../../theme/MainTheme/mainTheme";
+import baseTheme from "../../../theme/ButtonTheme/buttonTheme";
 import Tab from "../../molecule/tabs";
 import Card from "../../organism/Card";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -16,8 +16,20 @@ const useStyle = makeStyles({
   },
 });
 
-const MyLibrary = ({ currentlyReadingBooks, finishedReadingBooks }: any) => {
+// currentlyReadingBooks={currentlyReadingBooks}
+// setCurrentlyReadingBooks={setCurrentlyReadingBooks}
+// finishedReadingBooks={finishedReadingBooks}
+// setFinishedReadingBooks={setFinishedReadingBooks}
+// library={library}
+// setLibrary={setLibrary}
+
+const MyLibrary = ({
+  currentlyReadingBooks,
+  finishedReadingBooks,
+  library,
+}: any) => {
   const classes = useStyle();
+  console.log("finishedReadingBooks", finishedReadingBooks);
 
   let currentlyReadingBooksData = currentlyReadingBooks;
   let finishedReadingBooksData = finishedReadingBooks;

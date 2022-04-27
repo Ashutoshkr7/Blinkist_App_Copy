@@ -11,23 +11,20 @@ export const Template: ComponentStory<typeof Tabs> = (args: any) => (
 
 const tabData = [
   {
-    value: "category",
-    label: "Explore by category",
+    value: "currently_Reading",
+    label: "Currently reading",
   },
   {
-    value: "recent",
-    label: "See recently added titles",
-  },
-  {
-    value: "popular",
-    label: "See popular titles",
+    value: "finished",
+    label: "Finished",
   },
 ];
 
 Template.args = {
+  // borderBottom: "2px solid #E1ECFC",
   textColor: "primary",
   indicatorColor: "primary",
-  // stateHandler: {handleState},
+  // indicatorColor: "green",
   tabData: tabData,
 };
 

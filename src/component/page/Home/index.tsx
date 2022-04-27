@@ -37,11 +37,14 @@ const SearchComponent = ({
   setJustAdded,
   featuredAudioBlinks,
   setFeaturedAudioBlinks,
+  library,
+  setLibrary,
   ...props
 }: any) => {
   const classes = useStyles();
 
-  console.log("trendingBlinks", trendingBlinks);
+  // console.log("trendingBlinks", trendingBlinks);
+  // console.log("library", library);
   return (
     <Container>
       <HomePageAdvertisement
