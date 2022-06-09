@@ -31,7 +31,7 @@ export default function TabsWrappedLabel({ tabData, ...props }: any) {
           onChange={handleChange}
           aria-label="wrapped label tabs example"
           autoCapitalize="none"
-          indicatorColor="secondary"
+          // indicatorColor="secondary"
           data-testid="tabs"
         >
           {tabData.map((currTab: any) => {
@@ -43,8 +43,11 @@ export default function TabsWrappedLabel({ tabData, ...props }: any) {
                 sx={{
                   width: "200px",
                   fontSize: "16px",
+                  fontFamily: "Cera Pro",
+                  color: "#6D787E",
                   // borderBottom: "2px solid green",
                   borderBottom: "2px solid #E1ECFC",
+                  // borderBottom: "2px solid #2CE080",
                   alignItems: "start",
                 }}
                 className={classes.tab}

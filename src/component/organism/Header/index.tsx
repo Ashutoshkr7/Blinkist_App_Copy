@@ -58,7 +58,10 @@ const HeaderComponent = (props: any) => {
                     style={{ textDecoration: "none", fontSize: "30px" }}
                   />
                 }
-                sx={{ color: "black", margin: "0px 5px 0px 40px" }}
+                sx={{
+                  color: "#042330",
+                  margin: "0px 5px 0px 40px",
+                }}
               />
 
               <Button
@@ -69,13 +72,27 @@ const HeaderComponent = (props: any) => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: "#03314B",
+                  fontFamily: "Cera Pro",
                   margin: "5px 10px",
+                  textTransform: "capitalize",
                 }}
                 label="Explore"
                 endIcon={
-                  (!props.exploreOption && <KeyboardArrowUp />) ||
-                  (props.exploreOption && <KeyboardArrowDown />)
+                  (!props.exploreOption && (
+                    <KeyboardArrowUp
+                      sx={{
+                        color: "#042330",
+                      }}
+                    />
+                  )) ||
+                  (props.exploreOption && (
+                    <KeyboardArrowDown
+                      sx={{
+                        color: "#042330",
+                      }}
+                    />
+                  ))
                 }
               />
 
@@ -84,7 +101,12 @@ const HeaderComponent = (props: any) => {
                   size="medium"
                   key={2}
                   label="My Library"
-                  sx={{ color: "black", margin: "5px 10px" }}
+                  sx={{
+                    color: "#03314B",
+                    margin: "5px 10px",
+                    fontFamily: "Cera Pro",
+                    textTransform: "capitalize",
+                  }}
                 />
               </NavLink>
             </Box>
@@ -98,11 +120,19 @@ const HeaderComponent = (props: any) => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  color: "black",
+                  color: "#03314B",
                   margin: "5px 10px",
+                  fontFamily: "Cera Pro",
+                  textTransform: "capitalize",
                 }}
                 label="Account"
-                endIcon={<KeyboardArrowDown />}
+                endIcon={
+                  <KeyboardArrowDown
+                    sx={{
+                      color: "#042330",
+                    }}
+                  />
+                }
               />
             </Tooltip>
           </Box>

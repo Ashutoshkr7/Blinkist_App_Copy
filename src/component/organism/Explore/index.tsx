@@ -158,13 +158,14 @@ const ExploreComponent = () => {
       <Container className={`${classes.container} ${allClass.container}`}>
         <Typography
           variant="subtitle3"
-          sx={{ color: "#116BE9", fontWeight: "bold" }}
+          sx={{ color: "#116BE9", fontWeight: "bold", fontFamily: "Cera Pro" }}
           mr={12}
         >
           Explore by category
         </Typography>
         <Link to="/" style={{ textDecoration: "none" }}>
           <Typography
+            sx={{ color: "#6D787E", fontFamily: "Cera Pro" }}
             variant="subtitle3"
             mr={12}
             className={`${classes.topicText} ${allClass.topic}`}
@@ -174,6 +175,7 @@ const ExploreComponent = () => {
         </Link>
         <Link to="/" style={{ textDecoration: "none" }}>
           <Typography
+            sx={{ color: "#6D787E", fontFamily: "Cera Pro" }}
             className={`${classes.topicText} ${allClass.topic}`}
             variant="subtitle3"
             mr={12}

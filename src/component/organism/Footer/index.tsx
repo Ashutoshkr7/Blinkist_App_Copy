@@ -45,7 +45,11 @@ const FooterComponent = (props: any) => {
             />
             <Typography
               variant="h6"
-              sx={{ fontWeight: "bold", color: "blue" }}
+              sx={{
+                fontWeight: "bold",
+                color: "#0365F2",
+                fontFamily: "Cera Pro",
+              }}
               data-testid="slogan"
             >
               Big ideas in small packages <br />
@@ -62,11 +66,25 @@ const FooterComponent = (props: any) => {
                   }}
                   data-testid="list"
                 >
-                  <Typography pb={2} sx={{ fontWeight: "bold" }}>
+                  <Typography
+                    pb={2}
+                    sx={{
+                      fontWeight: "bold",
+                      color: "#03314B",
+                      fontFamily: "Cera Pro",
+                    }}
+                  >
                     {curr.category}
                   </Typography>
                   {curr.list.map((currList) => {
-                    return <Typography pb={1}>{currList}</Typography>;
+                    return (
+                      <Typography
+                        pb={1}
+                        sx={{ color: "#6D787E", fontFamily: "Cera Pro" }}
+                      >
+                        {currList}
+                      </Typography>
+                    );
                   })}
                 </Box>
               );

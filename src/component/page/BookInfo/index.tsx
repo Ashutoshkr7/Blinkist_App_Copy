@@ -11,6 +11,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import theme from "../../../theme/MainTheme/mainTheme";
 import { makeStyles as makeStyle } from "@mui/styles";
 import { makeStyles } from "@material-ui/core/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import buttonTheme from "../../../theme/ButtonTheme/buttonTheme";
 
 const useStyle = makeStyle((themes: any) => ({
   topHeading: {
@@ -79,7 +81,8 @@ const useStyles = makeStyles((themes) => ({
   },
 }));
 
-const BookInfoComponent = ({ library, setLibrary, id }: any) => {
+const BookInfoComponent = ({ library, setLibrary }: any) => {
+  // const BookInfoComponent = ({ library, setLibrary, id }: any) => {
   const classes = useStyle();
   const allClass = useStyles();
   let { bookId } = useParams();
@@ -106,15 +109,31 @@ const BookInfoComponent = ({ library, setLibrary, id }: any) => {
 
   const handleState = (state: any) => {
     setCurrState(state);
+    setLibrary(library);
   };
+
+  // console.log("library", library);
+  // console.log("bookId", bookId);
 
   const moreInfo = () => {
     if (currState === tabData[0].value) {
-      return <Typography>{bookDataSynopics}</Typography>;
+      return (
+        <Typography sx={{ fontFamily: "Cera Pro", color: "#03314B" }}>
+          {bookDataSynopics}
+        </Typography>
+      );
     } else if (currState === tabData[1].value) {
-      return <Typography>{bookDatafor}</Typography>;
+      return (
+        <Typography sx={{ fontFamily: "Cera Pro", color: "#03314B" }}>
+          {bookDatafor}
+        </Typography>
+      );
     } else if (currState === tabData[2].value) {
-      return <Typography>{bookDataAboutAuthor}</Typography>;
+      return (
+        <Typography sx={{ fontFamily: "Cera Pro", color: "#03314B" }}>
+          {bookDataAboutAuthor}
+        </Typography>
+      );
     }
   };
   return !library ? (
@@ -122,37 +141,75 @@ const BookInfoComponent = ({ library, setLibrary, id }: any) => {
   ) : (
     <>
       <Container>
-        <Typography className={classes.topHeading}>
+        <Typography
+          className={classes.topHeading}
+          sx={{
+            color: "#03314B",
+            fontFamily: "Cera Pro",
+          }}
+        >
           Get the key ideas from
         </Typography>
         <Box className={classes.mainParent}>
           <Box className={classes.parent}>
             <Box>
               {library.map((curr: any) => {
-                if (curr.id === bookId) {
+                if (curr.id == bookId) {
                   bookDataSynopics = curr.synopics;
                   bookDatafor = curr.for;
                   bookDataAboutAuthor = curr.about_author;
                   image = curr.imageURL;
-
-                  console.log("image", image);
-
+                  // console.log("image", image);
                   return (
                     <>
-                      <Typography className={classes.name} variant="h4">
+                      <Typography
+                        className={classes.name}
+                        variant="h4"
+                        sx={{
+                          color: "#03314B",
+                          fontFamily: "Cera Pro",
+                        }}
+                      >
                         {curr.name}
                       </Typography>
-                      <Typography className={classes.aim}>
+                      <Typography
+                        className={classes.aim}
+                        sx={{
+                          color: "#03314B",
+                          fontFamily: "Cera Pro",
+                        }}
+                      >
                         {curr.aim}
                       </Typography>
-                      <Typography className={classes.writerName}>
+                      <Typography
+                        className={classes.writerName}
+                        sx={{
+                          color: "#6D787E",
+                          fontFamily: "Cera Pro",
+                        }}
+                      >
                         {curr.writerName}
                       </Typography>
                       <Box className={classes.timeInfo} sx={{}}>
                         <Icon
-                          icon={<AccessAlarm className={classes.alarmIcon} />}
+                          icon={
+                            <AccessAlarm
+                              className={classes.alarmIcon}
+                              sx={{
+                                color: "#6D787E",
+                                fontFamily: "Cera Pro",
+                              }}
+                            />
+                          }
                         />
-                        <Typography className={classes.time} variant="body">
+                        <Typography
+                          className={classes.time}
+                          variant="body"
+                          sx={{
+                            color: "#6D787E",
+                            fontFamily: "Cera Pro",
+                          }}
+                        >
                           {curr.timeRead}
                         </Typography>
                       </Box>
@@ -161,28 +218,58 @@ const BookInfoComponent = ({ library, setLibrary, id }: any) => {
                 }
               })}
             </Box>
+
             <Box className={classes.clickables}>
-              <Button
-                label="Read now"
-                size="medium"
-                variant="outlined"
-                color="success"
-                className={classes.statusBox}
-              />
-              <Button
-                data-testid="status-handler"
-                label="Finished Reading"
-                size="medium"
-                variant="contained"
-                color="success"
-                classesName={classes.status}
-              />
-              <Button
-                label="Send to Kindle"
-                size="medium"
-                className={classes.forward}
-                endIcon={<ArrowForward />}
-              />
+              <ThemeProvider theme={buttonTheme}>
+                <Button
+                  label="Read now"
+                  size="medium"
+                  variant="outlined"
+                  color="success"
+                  className={classes.statusBox}
+                  sx={{
+                    border: "1px solid #042330",
+                    borderRadius: "4px",
+                    fontFamily: "Cera Pro",
+                    color: "#22C870",
+                    textTransform: "capitalize",
+                  }}
+                />
+                <Button
+                  data-testid="status-handler"
+                  label="Finished Reading"
+                  size="medium"
+                  variant="contained"
+                  color="success"
+                  classesName={classes.status}
+                  sx={{
+                    background: "#2CE080",
+                    color: "#03314B",
+                    borderRadius: "4px",
+                    fontFamily: "Cera Pro",
+                    textTransform: "capitalize",
+                  }}
+                />
+                <Button
+                  sx={{
+                    borderRadius: "4px",
+                    fontFamily: "Cera Pro",
+                    color: "#6D787E",
+                    textTransform: "capitalize",
+                  }}
+                  label="Send to Kindle"
+                  size="medium"
+                  className={classes.forward}
+                  endIcon={
+                    <ArrowForward
+                      sx={{
+                        borderRadius: "4px",
+                        color: "#6D787E",
+                      }}
+                    />
+                  }
+                />
+              </ThemeProvider>
             </Box>
           </Box>
           <Box>

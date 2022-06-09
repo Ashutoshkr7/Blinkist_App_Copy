@@ -1,16 +1,22 @@
 import { createTheme } from "@mui/material/styles";
 
 const buttonTheme = createTheme({
+  components: {
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: "capitalize",
+        },
+      },
+    },
+  },
   palette: {
     success: {
-      main: "#11cb5f",
+      main: "#2CE080",
     },
     primary: {
-      main: "#ffffff",
+      main: "#22C870",
       contrastText: "#11cb5f",
-    },
-    background: {
-      default: "#394764",
     },
   },
   typography: {

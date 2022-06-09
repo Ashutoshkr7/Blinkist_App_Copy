@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { ThemeProvider } from "@mui/material/styles";
+import baseTheme from "../../../theme/ButtonTheme/buttonTheme";
 import Button from ".";
 
 const ButtonComponent = {
@@ -8,7 +9,15 @@ const ButtonComponent = {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args: any) => (
-  <Button {...args} />
+  <ThemeProvider theme={baseTheme}>
+    <Button
+      {...args}
+      sx={{
+        textTransform: "capitalize",
+        borderColor: "#042330",
+      }}
+    />
+  </ThemeProvider>
 );
 Template.args = {
   label: "Button",

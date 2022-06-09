@@ -54,11 +54,22 @@ const SearchComponent = ({
       />
       <Input
         className={classes.input}
-        startIcon={<Search />}
+        startIcon={
+          <Search
+            sx={{
+              color: "#3A4649",
+            }}
+          />
+        }
         placeholder="Search by title or author"
-        sx={{ width: "658px" }}
+        sx={{ width: "658px", fontFamily: "Cera Pro", color: "#6D787E" }}
       />
-      <Typography className={classes.heading}>Trending blinks</Typography>
+      <Typography
+        className={classes.heading}
+        sx={{ color: "#03314B", fontFamily: "Cera Pro" }}
+      >
+        Trending blinks
+      </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {trendingBlinks.map((curr: any) => {
           return (
@@ -81,7 +92,12 @@ const SearchComponent = ({
         })}
       </Box>
 
-      <Typography className={classes.heading}>Just added</Typography>
+      <Typography
+        className={classes.heading}
+        sx={{ color: "#03314B", fontFamily: "Cera Pro" }}
+      >
+        Just added
+      </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {justAdded.map((curr: any) => {
           return (
@@ -104,7 +120,12 @@ const SearchComponent = ({
         })}
       </Box>
 
-      <Typography className={classes.heading}>Featured audio blinks</Typography>
+      <Typography
+        className={classes.heading}
+        sx={{ color: "#03314B", fontFamily: "Cera Pro" }}
+      >
+        Featured audio blinks
+      </Typography>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
         {featuredAudioBlinks.map((curr: any) => {
           return (

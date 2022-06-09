@@ -6,8 +6,8 @@ import baseTheme from "../../../theme/ButtonTheme/buttonTheme";
 import Tab from "../../molecule/tabs";
 import Card from "../../organism/Card";
 import CircularProgress from "@mui/material/CircularProgress";
-import theme from "../../../theme/MainTheme/mainTheme";
 import { makeStyles } from "@mui/styles";
+
 const useStyle = makeStyles({
   cards: {
     display: "flex",
@@ -90,10 +90,19 @@ const MyLibrary = ({
 
   return (
     <Container sx={{ paddingTop: "50px" }}>
-      <Typography variant="h5" theme={baseTheme} mb={4}>
+      <Typography
+        variant="h5"
+        theme={baseTheme}
+        mb={4}
+        sx={{ color: "#03314B", fontFamily: "Cera Pro" }}
+      >
         My Library
       </Typography>
-      <Tab stateHandler={handleState} tabData={tabData} />
+      <Tab
+        stateHandler={handleState}
+        tabData={tabData}
+        sx={{ color: "#042330", fontFamily: "Cera Pro" }}
+      />
       <Box className={classes.cards} mt={4}>
         {cards()}
       </Box>

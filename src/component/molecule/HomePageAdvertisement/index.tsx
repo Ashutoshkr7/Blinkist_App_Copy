@@ -43,14 +43,18 @@ const HomePageAdvertisement = ({ heading, description, img }: any) => {
       >
         <Typography
           variant="h4"
-          sx={{ fontWeight: "bold" }}
+          sx={{
+            fontWeight: "bold",
+            color: "#03314B",
+            fontFamily: "Cera Pro",
+          }}
           className={classes.heading}
           data-testid="heading"
         >
           {heading}
         </Typography>
         <Typography
-          sx={{ color: "gray" }}
+          sx={{ color: "#6D787E", fontFamily: "Cera Pro" }}
           className={classes.para}
           data-testid="description"
         >
